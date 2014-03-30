@@ -58,6 +58,6 @@ Strategy.prototype.authorize = function(req) {
   });
 }
 
-exports.version = '0.0.2';
+exports.version = '0.0.3';
 exports = module.exports = Strategy;
 exports.Strategy = Strategy;

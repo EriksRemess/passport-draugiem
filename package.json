@@ -1,6 +1,6 @@
 {
   "name": "passport-draugiem",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Draugiem (Frype) authentication strategy for Passport.",
   "main": "index.js",
   "repository": {
@@ -15,12 +15,17 @@
     "authentication",
     "identity"
   ],
-  "author": "Ēriks Remess <eriks@geekli.st>",
+  "author": {
+    "name": "Ēriks Remess",
+    "email": "eriks@geekli.st",
+    "url": "https://geekli.st/Eriks"
+  },
   "bugs": {
     "url": "https://github.com/EriksRemess/passport-draugiem/issues"
   },
   "homepage": "https://github.com/EriksRemess/passport-draugiem",
   "dependencies": {
-    "request": "^2.34.0"
+    "request": "^2.34.0",
+    "passport": "^0.2.0"
   }
 }
