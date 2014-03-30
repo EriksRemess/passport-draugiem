@@ -1,8 +1,6 @@
 var passport = require('passport')
   , util = require('util')
   , request = require('request')
-  , qs = require('querystring')
-  , url = require('url')
   , md5sum = function(string) {
     return require('crypto').createHash('md5').update(string).digest('hex');
   };
@@ -60,6 +58,6 @@ Strategy.prototype.authorize = function(req) {
   });
 }
 
-exports.version = '0.0.1';
+exports.version = '0.0.2';
 exports = module.exports = Strategy;
 exports.Strategy = Strategy;
