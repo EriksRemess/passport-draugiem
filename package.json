@@ -1,7 +1,8 @@
 {
   "name": "passport-draugiem",
   "version": "0.0.4",
-  "description": "Draugiem (Frype) authentication strategy for Passport.",
+  "description": "Draugiem.lv authentication strategy for Passport.",
+  "license": "MIT",
   "main": "index.js",
   "repository": {
     "type": "git",

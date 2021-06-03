@@ -47,10 +47,10 @@ application:
 
 ## Credits
 
-  - [Ēriks Remess](http://geekli.st/Eriks)
+  - [Ēriks Remess](http://github.com/EriksRemess)
 
 ## License
 
 [The MIT License](http://opensource.org/licenses/MIT)
 
-Copyright (c) 2014 Ēriks Remess <[https://geekli.st/Eriks](https://geekli.st/Eriks)>
+Copyright (c) 2021 Ēriks Remess
