@@ -1,6 +1,7 @@
 import { Strategy as PassportStrategy } from 'passport';
 import fetch from 'node-fetch';
 import { createHash } from 'crypto';
+import { URLSearchParams } from 'url';
 export default class Strategy extends PassportStrategy {
   constructor (options, verify) {
     super();
@@ -22,7 +23,12 @@ export default class Strategy extends PassportStrategy {
     }
     if (req.query?.dr_auth_status === 'ok' && (/^[a-z0-9]{20}$/).test(req.query?.dr_auth_code)) {
       try {
-        const data = await (await fetch(`http://api.draugiem.lv/json/?action=authorize&app=${this._appKey}&code=${req.query['dr_auth_code']}`)).json();
+        const params = new URLSearchParams({
+          action: 'authorize',
+          app: this._appKey,
+          code: req.query.dr_auth_code,
+        }).toString();
+        const data = await (await fetch(`http://api.draugiem.lv/json/?${params}`)).json();
         if (!data.apikey) return this.error('no key in response');
         let profile = data.users[data.uid];
         if (this._passReqToCallback) return this._verify(req, data.apikey, profile, verified);
@@ -32,7 +38,12 @@ export default class Strategy extends PassportStrategy {
       }      
     }
     const hash = createHash('md5').update(this._appKey + this._callbackURL).digest('hex');
-    return this.redirect(`http://api.draugiem.lv/authorize/?app=${this._appId}&hash=${hash}&redirect=${this._callbackURL}`, 302);
+    const params = new URLSearchParams({
+      app: this._appId,
+      hash,
+      redirect: this._callbackURL,
+    }).toString();
+    return this.redirect(`http://api.draugiem.lv/authorize/?${params}`, 302);
   }
 }
 
