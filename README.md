@@ -38,12 +38,15 @@ application:
     app.get('/auth/draugiem',
       passport.authenticate('draugiem'));
 
-    app.get('/auth/draugiem/callback', 
+    app.get('/auth/draugiem/callback',
       passport.authenticate('draugiem', { failureRedirect: '/login' }),
       function(req, res) {
         // Successful authentication, redirect home.
         res.redirect('/');
       });
+
+## Notes
+Requires Node 18+, as the module uses Node's built-in Fetch.
 
 ## Credits
 
@@ -53,4 +56,4 @@ application:
 
 [The MIT License](http://opensource.org/licenses/MIT)
 
-Copyright (c) 2021 Ēriks Remess
+Copyright (c) 2022 Ēriks Remess
