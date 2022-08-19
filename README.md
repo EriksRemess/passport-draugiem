@@ -2,30 +2,27 @@
 
 [Passport](http://passportjs.org/) strategy for authenticating with [Draugiem](http://www.draugiem.lv/)
 
-By plugging into Passport, Draugiem authentication can be easily and
-unobtrusively integrated into any application or framework that supports
-[Connect](http://www.senchalabs.org/connect/)-style middleware, including
-[Express](http://expressjs.com/).
-
 ## Install
-
-    $ npm install passport-draugiem
+```bash
+npm install passport-draugiem
+```
 
 ## Usage
 
 #### Configure Strategy
-
-    passport.use(new DraugiemStrategy({
-        appId: DRAUGIEM_APP_ID,
-        appKey: DRAUGIEM_APP_KEY,
-        callbackURL: "http://localhost:3000/auth/draugiem/callback"
-      },
-      function(apiKey, profile, done) {
-        User.findOrCreate({ draugiem: profile.uid }, function (err, user) {
-          return done(err, user);
-        });
-      }
-    ));
+```js
+passport.use(new DraugiemStrategy({
+    appId: DRAUGIEM_APP_ID,
+    appKey: DRAUGIEM_APP_KEY,
+    callbackURL: "http://localhost:3000/auth/draugiem/callback"
+  },
+  function(apiKey, profile, done) {
+    User.findOrCreate({ draugiem: profile.uid }, function (err, user) {
+      return done(err, user);
+    });
+  }
+));
+```
 
 #### Authenticate Requests
 
@@ -34,19 +31,24 @@ authenticate requests.
 
 For example, as route middleware in an [Express](http://expressjs.com/)
 application:
+```js
+app.get('/auth/draugiem',
+  passport.authenticate('draugiem'));
 
-    app.get('/auth/draugiem',
-      passport.authenticate('draugiem'));
-
-    app.get('/auth/draugiem/callback',
-      passport.authenticate('draugiem', { failureRedirect: '/login' }),
-      function(req, res) {
-        // Successful authentication, redirect home.
-        res.redirect('/');
-      });
+app.get('/auth/draugiem/callback',
+  passport.authenticate('draugiem', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  });
+```
 
 ## Notes
-Requires Node 18+, as the module uses Node's built-in Fetch.
+For Node.js 18+ you can skip installing node-fetch with
+```bash
+npm i passport-twitter-2 --omit=optional
+```
+and use built-in fetch instead.
 
 ## Credits
 

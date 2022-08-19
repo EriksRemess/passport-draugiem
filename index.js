@@ -1,6 +1,10 @@
 import { Strategy as PassportStrategy } from 'passport';
 import { createHash } from 'crypto';
 
+if (typeof fetch === "undefined") {
+  globalThis.fetch = (await import("node-fetch")).default;
+}
+
 export default class Strategy extends PassportStrategy {
   constructor(options, verify) {
     super();
