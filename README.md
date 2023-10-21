@@ -46,7 +46,7 @@ app.get('/auth/draugiem/callback',
 ## Notes
 For Node.js 18+ you can skip installing node-fetch with
 ```bash
-npm i passport-twitter-2 --omit=optional
+npm i passport-draugiem --omit=optional
 ```
 and use built-in fetch instead.
 
